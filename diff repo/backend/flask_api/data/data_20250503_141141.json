@@ -1,0 +1,27 @@
+{
+  "bank_balance": {
+    "balance": 10000.0,
+    "last_updated": "2025-05-03T14:11:41.492665"
+  },
+  "transactions": [
+    {
+      "type": "debit",
+      "amount": 914.76,
+      "category": "electronics",
+      "merchant": "Target",
+      "timestamp": "2025-05-03T14:10:41.492665"
+    }
+  ],
+  "policy_updates": [
+    {
+      "type": "location_restriction",
+      "description": "Updated security policy",
+      "timestamp": "2025-05-03T14:06:41.492665"
+    },
+    {
+      "type": "merchant_block",
+      "description": "Updated security policy",
+      "timestamp": "2025-05-03T14:08:41.492665"
+    }
+  ]
+}

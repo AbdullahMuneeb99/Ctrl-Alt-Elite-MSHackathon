@@ -1,0 +1,10 @@
+{"type": "balance", "amount": 10000.0, "category": "bank_balance", "severity": "normal", "description": "Current balance: 10000.0", "timestamp": "2025-05-03T14:31:35.866046"}
+{"type": "debit", "amount": 185.18, "category": "electronics", "severity": "normal", "description": "debit at Target", "timestamp": "2025-05-03T14:16:35.866046"}
+{"type": "credit", "amount": 991.68, "category": "groceries", "severity": "normal", "description": "credit at Amazon", "timestamp": "2025-05-03T14:00:35.866046"}
+{"type": "credit", "amount": 666.27, "category": "groceries", "severity": "normal", "description": "credit at Costco", "timestamp": "2025-05-03T14:24:35.866046"}
+{"type": "credit", "amount": 401.11, "category": "electronics", "severity": "normal", "description": "credit at Amazon", "timestamp": "2025-05-03T13:50:35.866046"}
+{"type": "balance", "amount": 11873.88, "category": "bank_balance", "severity": "normal", "description": "Current balance: 11873.88", "timestamp": "2025-05-03T14:33:15.995127"}
+{"type": "credit", "amount": 819.49, "category": "shopping", "severity": "normal", "description": "credit at Walmart", "timestamp": "2025-05-03T14:27:15.995127"}
+{"type": "credit", "amount": 897.97, "category": "entertainment", "severity": "normal", "description": "credit at Walmart", "timestamp": "2025-05-03T14:12:15.995127"}
+{"type": "credit", "amount": 510.07, "category": "electronics", "severity": "normal", "description": "credit at Walmart", "timestamp": "2025-05-03T13:39:15.995127"}
+{"type": "debit", "amount": 154.78, "category": "shopping", "severity": "normal", "description": "debit at Target", "timestamp": "2025-05-03T13:58:15.995127"}
