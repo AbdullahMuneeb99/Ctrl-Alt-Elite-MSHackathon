@@ -98,7 +98,7 @@ AbleBank Copilot empowers people with disabilities to manage finances independen
 
 ## Project Links
 
-- GitHub Repository: https://github.com/your-repo-name
+- GitHub Repository: [https://github.com/your-repo-name](https://github.com/AbdullahMuneeb99/Ctrl-Alt-Elite-MSHackathon)
 - Live Demo (Firebase Hosting): https://ablebank-app.web.app
 - Team Members: Taha Imran, Abdullah Muneeb, Dibyasha Sharma, Rohan Kulkarni, Om Prakash Gunja
 
