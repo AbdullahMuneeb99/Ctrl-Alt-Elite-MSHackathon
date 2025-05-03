@@ -21,8 +21,8 @@ const AccessibilityPanel: React.FC<AccessibilityPanelProps> = ({
     onUpdateProfile({ highContrastMode: !highContrastMode });
   };
   
-  const handleFontSizeChange = (size: 'small' | 'medium' | 'large') => {
-    onUpdateProfile({ fontSize: size });
+  const handleFontSizeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    onUpdateProfile({ fontSize: parseInt(e.target.value) });
   };
   
   const handleLanguageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -32,70 +32,59 @@ const AccessibilityPanel: React.FC<AccessibilityPanelProps> = ({
   if (!isOpen) return null;
   
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-end">
-      <div className="bg-white w-full max-w-sm h-full p-6 overflow-y-auto">
-        <div className="flex justify-between items-center mb-6">
-          <h2 className="text-xl font-semibold">Accessibility Settings</h2>
+    <div className="fixed inset-y-0 right-0 w-64 bg-white shadow-lg transform transition-transform duration-300 ease-in-out">
+      <div className="p-4">
+        <div className="flex justify-between items-center mb-4">
+          <h2 className="text-lg font-semibold">Accessibility Settings</h2>
           <button
             onClick={onClose}
             className="text-gray-500 hover:text-gray-700"
-            aria-label="Close accessibility panel"
           >
-            &times;
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
           </button>
         </div>
         
-        <div className="space-y-6">
+        <div className="space-y-4">
           <div>
-            <h3 className="text-lg font-medium mb-3">Display</h3>
-            <div className="flex items-center justify-between p-3 bg-gray-100 rounded-lg">
-              <div className="flex items-center">
-                {highContrastMode ? <Moon className="w-5 h-5 mr-2" /> : <Sun className="w-5 h-5 mr-2" />}
-                <span>High Contrast Mode</span>
-              </div>
-              <label className="relative inline-flex items-center cursor-pointer">
-                <input
-                  type="checkbox"
-                  checked={highContrastMode}
-                  onChange={handleContrastToggle}
-                  className="sr-only peer"
-                />
-                <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
-              </label>
-            </div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Font Size: {userProfile.fontSize}px
+            </label>
+            <input
+              type="range"
+              min="12"
+              max="24"
+              value={userProfile.fontSize}
+              onChange={handleFontSizeChange}
+              className="w-full"
+            />
           </div>
           
-          <div>
-            <h3 className="text-lg font-medium mb-3">Text Size</h3>
-            <div className="flex items-center p-3 bg-gray-100 rounded-lg">
-              <Type className="w-5 h-5 mr-2" />
-              <div className="flex space-x-2">
-                <button
-                  onClick={() => handleFontSizeChange('small')}
-                  className={`px-3 py-1 rounded ${
-                    fontSize === 'small' ? 'bg-blue-600 text-white' : 'bg-white text-gray-800'
-                  }`}
-                >
-                  Small
-                </button>
-                <button
-                  onClick={() => handleFontSizeChange('medium')}
-                  className={`px-3 py-1 rounded ${
-                    fontSize === 'medium' ? 'bg-blue-600 text-white' : 'bg-white text-gray-800'
-                  }`}
-                >
-                  Medium
-                </button>
-                <button
-                  onClick={() => handleFontSizeChange('large')}
-                  className={`px-3 py-1 rounded ${
-                    fontSize === 'large' ? 'bg-blue-600 text-white' : 'bg-white text-gray-800'
-                  }`}
-                >
-                  Large
-                </button>
-              </div>
-            </div>
+          <div className="flex items-center">
+            <input
+              type="checkbox"
+              id="highContrast"
+              checked={userProfile.highContrastMode}
+              onChange={handleContrastToggle}
+              className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+            />
+            <label
+              htmlFor="highContrast"
+              className="ml-2 block text-sm text-gray-700"
+            >
+              High Contrast Mode
+            </label>
           </div>
           
           <div>

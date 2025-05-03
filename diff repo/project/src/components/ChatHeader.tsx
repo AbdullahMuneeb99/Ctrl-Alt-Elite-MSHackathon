@@ -1,46 +1,43 @@
 import React from 'react';
-import { Settings, Accessibility, Bell } from 'lucide-react';
+import { SettingsIcon, BellIcon } from '@heroicons/react/24/outline';
 
 interface ChatHeaderProps {
   onToggleAccessibilityPanel: () => void;
   unreadAlerts: number;
 }
 
-const ChatHeader: React.FC<ChatHeaderProps> = ({ onToggleAccessibilityPanel, unreadAlerts }) => {
+const ChatHeader: React.FC<ChatHeaderProps> = ({
+  onToggleAccessibilityPanel,
+  unreadAlerts
+}) => {
   return (
-    <header className="bg-blue-600 text-white p-4 flex justify-between items-center">
-      <div className="flex items-center">
-        <h1 className="text-xl font-bold">BankAssist</h1>
-        <span className="ml-2 text-sm bg-blue-500 px-2 py-0.5 rounded">AI Banking Assistant</span>
-      </div>
-      
-      <div className="flex items-center space-x-3">
-        <button
-          className="relative p-2 rounded-full hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300"
-          aria-label="Notifications"
-        >
-          <Bell className="w-5 h-5" />
-          {unreadAlerts > 0 && (
-            <span className="absolute top-0 right-0 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
-              {unreadAlerts}
-            </span>
-          )}
-        </button>
+    <header className="bg-white border-b border-gray-200 p-4">
+      <div className="flex items-center justify-between">
+        <h1 className="text-xl font-semibold text-gray-800">Banking Assistant</h1>
         
-        <button
-          onClick={onToggleAccessibilityPanel}
-          className="p-2 rounded-full hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300"
-          aria-label="Accessibility settings"
-        >
-          <Accessibility className="w-5 h-5" />
-        </button>
-        
-        <button
-          className="p-2 rounded-full hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300"
-          aria-label="Settings"
-        >
-          <Settings className="w-5 h-5" />
-        </button>
+        <div className="flex items-center space-x-4">
+          <button
+            onClick={onToggleAccessibilityPanel}
+            className="p-2 text-gray-600 hover:text-gray-800 focus:outline-none"
+            aria-label="Accessibility settings"
+          >
+            <SettingsIcon className="h-6 w-6" />
+          </button>
+          
+          <div className="relative">
+            <button
+              className="p-2 text-gray-600 hover:text-gray-800 focus:outline-none"
+              aria-label="Notifications"
+            >
+              <BellIcon className="h-6 w-6" />
+              {unreadAlerts > 0 && (
+                <span className="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white transform translate-x-1/2 -translate-y-1/2 bg-red-500 rounded-full">
+                  {unreadAlerts}
+                </span>
+              )}
+            </button>
+          </div>
+        </div>
       </div>
     </header>
   );

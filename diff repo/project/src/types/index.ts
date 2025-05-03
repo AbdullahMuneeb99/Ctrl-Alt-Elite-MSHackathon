@@ -4,7 +4,7 @@ export interface Message {
   sender: 'user' | 'bot';
   timestamp: Date;
   isAlert?: boolean;
-  alertType?: 'warning' | 'info' | 'success' | 'danger';
+  alertType?: 'danger' | 'warning' | 'success' | 'info';
 }
 
 export interface BankAccount {
@@ -13,15 +13,16 @@ export interface BankAccount {
   accountType: string;
   balance: number;
   currency: string;
+  lastUpdated: Date;
 }
 
 export interface Transaction {
   id: string;
-  date: Date;
-  description: string;
-  amount: number;
   type: 'credit' | 'debit';
+  amount: number;
   category: string;
+  merchant: string;
+  timestamp: Date;
 }
 
 export interface UserProfile {
@@ -33,5 +34,19 @@ export interface UserProfile {
   accounts: BankAccount[];
   notifications: boolean;
   highContrastMode: boolean;
-  fontSize: 'small' | 'medium' | 'large';
+  fontSize: number;
+}
+
+export interface FraudAlert {
+  id: string;
+  type: string;
+  severity: 'low' | 'medium' | 'high';
+  description: string;
+  timestamp: Date;
+}
+
+export interface BalanceTrend {
+  id: string;
+  balance: number;
+  timestamp: Date;
 }

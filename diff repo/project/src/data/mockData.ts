@@ -1,4 +1,4 @@
-import { BankAccount, Transaction, UserProfile, Message } from '../types';
+import { BankAccount, Transaction, UserProfile, Message, FraudAlert, BalanceTrend } from '../types';
 
 export const mockAccounts: BankAccount[] = [
   {
@@ -27,43 +27,19 @@ export const mockAccounts: BankAccount[] = [
 export const mockTransactions: Transaction[] = [
   {
     id: '1',
-    date: new Date('2023-10-15'),
-    description: 'Grocery Store',
-    amount: 78.35,
-    type: 'debit',
-    category: 'Food'
+    type: 'credit',
+    amount: 1000,
+    category: 'salary',
+    merchant: 'Employer Inc',
+    timestamp: new Date()
   },
   {
     id: '2',
-    date: new Date('2023-10-14'),
-    description: 'Salary Deposit',
-    amount: 3200.00,
-    type: 'credit',
-    category: 'Income'
-  },
-  {
-    id: '3',
-    date: new Date('2023-10-13'),
-    description: 'Electric Bill',
-    amount: 145.72,
     type: 'debit',
-    category: 'Utilities'
-  },
-  {
-    id: '4',
-    date: new Date('2023-10-10'),
-    description: 'Restaurant',
-    amount: 56.20,
-    type: 'debit',
-    category: 'Dining'
-  },
-  {
-    id: '5',
-    date: new Date('2023-10-08'),
-    description: 'Gas Station',
-    amount: 45.00,
-    type: 'debit',
-    category: 'Transportation'
+    amount: 50,
+    category: 'shopping',
+    merchant: 'Amazon',
+    timestamp: new Date(Date.now() - 3600000)
   }
 ];
 
@@ -76,13 +52,13 @@ export const mockUserProfile: UserProfile = {
   accounts: mockAccounts,
   notifications: true,
   highContrastMode: false,
-  fontSize: 'medium'
+  fontSize: 16
 };
 
 export const initialMessages: Message[] = [
   {
     id: '1',
-    text: 'Welcome to BankAssist! How can I help you today?',
+    text: 'Hello! I am your banking assistant. How can I help you today?',
     sender: 'bot',
     timestamp: new Date()
   },
@@ -101,5 +77,28 @@ export const initialMessages: Message[] = [
     timestamp: new Date(Date.now() - 120000),
     isAlert: true,
     alertType: 'success'
+  }
+];
+
+export const mockFraudAlerts: FraudAlert[] = [
+  {
+    id: '1',
+    type: 'suspicious_activity',
+    severity: 'high',
+    description: 'Unusual transaction detected in a foreign country',
+    timestamp: new Date()
+  }
+];
+
+export const mockBalanceTrend: BalanceTrend[] = [
+  {
+    id: '1',
+    balance: 5000,
+    timestamp: new Date()
+  },
+  {
+    id: '2',
+    balance: 4950,
+    timestamp: new Date(Date.now() - 3600000)
   }
 ];

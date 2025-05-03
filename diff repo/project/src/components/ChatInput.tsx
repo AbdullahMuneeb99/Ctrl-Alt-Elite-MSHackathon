@@ -1,99 +1,66 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { Mic, MicOff, Send, Paperclip } from 'lucide-react';
-import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
+import React, { useState, useRef } from 'react';
+import { MicrophoneIcon, PaperAirplaneIcon } from '@heroicons/react/24/solid';
 
 interface ChatInputProps {
-  onSendMessage: (message: string) => void;
+  onSendMessage: (text: string) => void;
   isListening: boolean;
   toggleListening: () => void;
+  isLoading: boolean;
 }
 
-const ChatInput: React.FC<ChatInputProps> = ({ onSendMessage, isListening, toggleListening }) => {
-  const [message, setMessage] = useState('');
-  const inputRef = useRef<HTMLTextAreaElement>(null);
-  
-  const {
-    transcript,
-    listening,
-    resetTranscript,
-    browserSupportsSpeechRecognition
-  } = useSpeechRecognition();
-  
-  useEffect(() => {
-    if (transcript) {
-      setMessage(transcript);
-    }
-  }, [transcript]);
-  
+const ChatInput: React.FC<ChatInputProps> = ({ onSendMessage, isListening, toggleListening, isLoading }) => {
+  const [inputText, setInputText] = useState('');
+  const inputRef = useRef<HTMLInputElement>(null);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (message.trim()) {
-      onSendMessage(message.trim());
-      setMessage('');
-      resetTranscript();
+    if (inputText.trim() && !isLoading) {
+      onSendMessage(inputText);
+      setInputText('');
     }
   };
-  
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter' && !e.shiftKey) {
-      e.preventDefault();
       handleSubmit(e);
     }
   };
-  
-  const handleVoiceInput = () => {
-    toggleListening();
-    if (!isListening) {
-      resetTranscript();
-      SpeechRecognition.startListening({ continuous: true });
-    } else {
-      SpeechRecognition.stopListening();
-    }
-  };
-  
+
   return (
-    <form onSubmit={handleSubmit} className="flex items-end gap-2 border-t p-3 bg-white">
-      <button
-        type="button"
-        className="p-2 rounded-full text-gray-500 hover:bg-gray-100 focus:outline-none"
-        aria-label="Attach file"
-      >
-        <Paperclip className="w-5 h-5" />
-      </button>
-      
-      <div className="relative flex-1">
-        <textarea
+    <form onSubmit={handleSubmit} className="border-t border-gray-200 p-4">
+      <div className="flex items-center space-x-4">
+        <input
           ref={inputRef}
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
+          type="text"
+          value={inputText}
+          onChange={(e) => setInputText(e.target.value)}
           onKeyDown={handleKeyDown}
           placeholder="Type your message..."
-          className="w-full border rounded-lg px-4 py-2 pr-10 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
-          rows={1}
-          aria-label="Message input"
+          className="flex-1 rounded-lg border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          disabled={isLoading}
         />
-      </div>
-      
-      {browserSupportsSpeechRecognition && (
         <button
           type="button"
-          onClick={handleVoiceInput}
-          className={`p-2 rounded-full focus:outline-none ${
-            isListening ? 'bg-red-100 text-red-500' : 'text-gray-500 hover:bg-gray-100'
+          onClick={toggleListening}
+          className={`p-2 rounded-full ${
+            isListening ? 'bg-red-500 text-white' : 'bg-gray-200 text-gray-600'
           }`}
-          aria-label={isListening ? 'Stop voice input' : 'Start voice input'}
+          disabled={isLoading}
         >
-          {isListening ? <MicOff className="w-5 h-5" /> : <Mic className="w-5 h-5" />}
+          <MicrophoneIcon className="h-6 w-6" />
         </button>
-      )}
-      
-      <button
-        type="submit"
-        className="p-2 rounded-full bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-        aria-label="Send message"
-      >
-        <Send className="w-5 h-5" />
-      </button>
+        <button
+          type="submit"
+          disabled={!inputText.trim() || isLoading}
+          className={`p-2 rounded-full ${
+            !inputText.trim() || isLoading
+              ? 'bg-gray-200 text-gray-400'
+              : 'bg-blue-500 text-white'
+          }`}
+        >
+          <PaperAirplaneIcon className="h-6 w-6" />
+        </button>
+      </div>
     </form>
   );
 };

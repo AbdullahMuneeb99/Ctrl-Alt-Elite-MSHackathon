@@ -1,13 +1,13 @@
 import { Message, Transaction } from '../types';
 
 export const generateUniqueId = (): string => {
-  return Date.now().toString(36) + Math.random().toString(36).substring(2);
+  return Math.random().toString(36).substring(2) + Date.now().toString(36);
 };
 
-export const formatCurrency = (amount: number, currency: string = 'USD'): string => {
+export const formatCurrency = (amount: number): string => {
   return new Intl.NumberFormat('en-US', {
     style: 'currency',
-    currency: currency,
+    currency: 'USD'
   }).format(amount);
 };
 
@@ -16,6 +16,8 @@ export const formatDate = (date: Date): string => {
     year: 'numeric',
     month: 'short',
     day: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit'
   }).format(date);
 };
 
@@ -74,4 +76,42 @@ export const translateText = async (text: string, targetLanguage: string): Promi
   // For now, we'll just return the original text
   console.log(`Translating to ${targetLanguage}: ${text}`);
   return text;
+};
+
+export const getAlertColor = (type: 'danger' | 'warning' | 'success' | 'info'): string => {
+  switch (type) {
+    case 'danger':
+      return 'bg-red-100 text-red-800';
+    case 'warning':
+      return 'bg-yellow-100 text-yellow-800';
+    case 'success':
+      return 'bg-green-100 text-green-800';
+    case 'info':
+      return 'bg-blue-100 text-blue-800';
+    default:
+      return 'bg-gray-100 text-gray-800';
+  }
+};
+
+export const getAlertIcon = (type: 'danger' | 'warning' | 'success' | 'info'): string => {
+  switch (type) {
+    case 'danger':
+      return '⚠️';
+    case 'warning':
+      return '⚠️';
+    case 'success':
+      return '✅';
+    case 'info':
+      return 'ℹ️';
+    default:
+      return 'ℹ️';
+  }
+};
+
+export const getTransactionColor = (type: 'credit' | 'debit'): string => {
+  return type === 'credit' ? 'text-green-600' : 'text-red-600';
+};
+
+export const getTransactionIcon = (type: 'credit' | 'debit'): string => {
+  return type === 'credit' ? '↑' : '↓';
 };
