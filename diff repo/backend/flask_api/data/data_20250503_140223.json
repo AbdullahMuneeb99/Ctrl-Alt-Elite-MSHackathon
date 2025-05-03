@@ -1,0 +1,73 @@
+{
+  "bank_balance": {
+    "balance": 5243.06,
+    "last_updated": "2025-05-03T14:02:23.038728"
+  },
+  "transactions": [
+    {
+      "type": "debit",
+      "amount": 346.74,
+      "category": "utilities",
+      "timestamp": "2025-05-03T13:58:23.038814",
+      "merchant": "Merchant_8798"
+    },
+    {
+      "type": "credit",
+      "amount": 438.31,
+      "category": "shopping",
+      "timestamp": "2025-05-03T14:00:23.038851",
+      "merchant": "Merchant_9214"
+    },
+    {
+      "type": "debit",
+      "amount": 44.1,
+      "category": "utilities",
+      "timestamp": "2025-05-03T13:16:23.038866",
+      "merchant": "Merchant_7924"
+    },
+    {
+      "type": "debit",
+      "amount": 413.53,
+      "category": "groceries",
+      "timestamp": "2025-05-03T13:50:23.038880",
+      "merchant": "Merchant_9240"
+    },
+    {
+      "type": "credit",
+      "amount": 408.66,
+      "category": "groceries",
+      "timestamp": "2025-05-03T13:11:23.038891",
+      "merchant": "Merchant_7818"
+    }
+  ],
+  "fraud_alerts": [
+    {
+      "alert_id": "ALERT_7715",
+      "type": "unusual_login",
+      "severity": "high",
+      "timestamp": "2025-05-03T14:02:23.038913",
+      "description": "Unusual activity detected: Multiple failed login attempts"
+    },
+    {
+      "alert_id": "ALERT_3340",
+      "type": "unusual_login",
+      "severity": "low",
+      "timestamp": "2025-05-03T14:02:23.038923",
+      "description": "Unusual activity detected: Multiple failed login attempts"
+    }
+  ],
+  "policy_updates": [
+    {
+      "update_id": "POLICY_3",
+      "type": "privacy",
+      "timestamp": "2025-05-03T14:02:23.038941",
+      "description": "Policy update regarding transaction limits"
+    },
+    {
+      "update_id": "POLICY_5",
+      "type": "security",
+      "timestamp": "2025-05-03T14:02:23.038949",
+      "description": "Policy update regarding security measures"
+    }
+  ]
+}

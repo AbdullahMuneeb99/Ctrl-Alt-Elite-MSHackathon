@@ -1,2 +1,0 @@
-# requirements for Django API
-Django

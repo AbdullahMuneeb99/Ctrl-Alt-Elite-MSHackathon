@@ -1,0 +1,43 @@
+{
+  "bank_balance": {
+    "balance": 10000.0,
+    "last_updated": "2025-05-03T14:16:00.965230"
+  },
+  "transactions": [
+    {
+      "type": "credit",
+      "amount": 115.85,
+      "category": "electronics",
+      "merchant": "Costco",
+      "timestamp": "2025-05-03T13:17:00.965230"
+    },
+    {
+      "type": "debit",
+      "amount": 299.81,
+      "category": "groceries",
+      "merchant": "Best Buy",
+      "timestamp": "2025-05-03T13:52:00.965230"
+    },
+    {
+      "type": "credit",
+      "amount": 240.12,
+      "category": "electronics",
+      "merchant": "Target",
+      "timestamp": "2025-05-03T14:13:00.965230"
+    },
+    {
+      "type": "debit",
+      "amount": 786.57,
+      "category": "shopping",
+      "merchant": "Costco",
+      "timestamp": "2025-05-03T13:32:00.965230"
+    },
+    {
+      "type": "debit",
+      "amount": 640.71,
+      "category": "entertainment",
+      "merchant": "Costco",
+      "timestamp": "2025-05-03T13:21:00.965230"
+    }
+  ]
+}

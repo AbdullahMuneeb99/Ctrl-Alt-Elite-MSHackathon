@@ -1,2 +1,6 @@
 # requirements for Flask API
 Flask
+openai
+python-dotenv
+pathway
+pandas

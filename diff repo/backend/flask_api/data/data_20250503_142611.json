@@ -1,0 +1,15 @@
+{
+  "bank_balance": {
+    "balance": 10000.0,
+    "last_updated": "2025-05-03T14:26:11.228775"
+  },
+  "transactions": [
+    {
+      "type": "credit",
+      "amount": 562.58,
+      "category": "electronics",
+      "merchant": "Costco",
+      "timestamp": "2025-05-03T14:14:11.228775"
+    }
+  ]
+}
